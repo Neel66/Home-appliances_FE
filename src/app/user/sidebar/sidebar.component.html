@@ -1,0 +1,67 @@
+<!-- <ng-sidebar-container> 
+    
+    <ng-sidebar [opened]="opened">
+        <h3 id="close" ><button (click)="toggleSidebar()" style="color: rgb(255, 0, 0);background-color: black;">X</button></h3>
+        
+        <ul class="menu">
+            
+            <li><button routerLink="/userprofile" class="btn btn-dark" style="color: blue;">Your Account</button></li>
+            <li ><button class="btn btn-dark" style="color: blue;">Order Traking</button>   </li>
+            <li>  <button class="btn btn-dark" style="color: blue;">Your Orders </button></li>
+          
+           <li><button routerLink="/complain" class="btn btn-dark" style="color: blue;"> Complain</button></li>
+         </ul>
+    </ng-sidebar>
+    <!-- <div ng-sidebar-content>
+        <button (click)="toggleSidebar()">
+            open
+        </button>
+    </div> -->
+<!-- </ng-sidebar-container> --> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="sidebar">
+    <div id="imgDiv">
+      <img
+        src="https://www.pngitem.com/pimgs/m/61-614009_home-appliances-psd-electronic-home-appliances-png-transparent.png"
+        alt="Profile Image"
+        style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover"
+      />
+    </div>
+    <!-- <h4 id="customerName">{{this.customerProfile.FirstName+" "+this.customerProfile.LastName}}</h4> -->
+    <div id="customerBtn"><button class="btn btn-primary" routerLink="/userhome">Home</button></div>
+    <br />
+    <hr />
+    <a routerLink="/userprofile" routerLinkActive="activeLink"
+      ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;My Profile</a
+    >
+    <a routerLink="/orderhistory" routerLinkActive="activeLink"
+      ><i class="fa fa-history" aria-hidden="true"></i>&nbsp;Order History</a
+    >
+    <a routerLink="/addtocart" routerLinkActive="activeLink"
+      ><i class="fa fa-shopping-cart" aria-hidden="true" ></i>&nbsp;Your Cart</a
+    >
+    <a routerLink="/complain" routerLinkActive="activeLink"
+      ><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;complain</a
+    >
+    <br>
+    <br>
+    <button class="btn btn-danger" id="logout" (click)=logout() style="margin-left: 80px;">
+      LOGOUT</button>
+    <!-- <a href="" (click)="logOut()"
+      ><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a -->
+    >
+  </div>
+  
+</body>
+</html>
+
+  <router-outlet></router-outlet>

@@ -1,0 +1,59 @@
+
+
+<app-navbar></app-navbar>
+<br><br><br>
+<h3 *ngIf="re" style="text-align: center; color :green">Complain Reply Send Successfully</h3>
+<h3 *ngIf="err" style="text-align: center; color :red">Somthing went wrong</h3>
+<h3 *ngIf="del" style="text-align: center; color :red">Complain delete Successfully </h3>
+    <pagination-controls (pageChange)="page = $event" style="text-align: center;"></pagination-controls>
+    <table class="table table-striped table-bordered container" >
+    
+    <thead>
+    <tr>
+    <th>Id</th>
+    <th>UserName</th>
+    <th>EmailId</th>
+    <th>MobileNo</th>
+    <th>complain</th>
+    <th>Delete</th>   
+    <th>Replay</th>
+    </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let c of complain | paginate: { itemsPerPage: 10, currentPage: page, totalItems:totalLength } ; let index=index">
+        <td>{{index+1}}</td>
+        <td>{{c.Users.username}}</td>
+        <td>{{c.Users.email}}</td>
+        <td>{{c.Users.mobile}}</td>
+        <td>{{c.complain}}</td>
+        <td>
+            <button (click)="ondelete(c._id)" style="background-color: white; border-color: white;" > 
+                <img class="glyphicon glyphicon-trash" height="45px" width="45px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdU5LBloVX2UPMDhEbgc99Tq6AzHRj5S4R-g&usqp=CAU">
+            </button>
+        </td>
+        <td>
+            <button  style="background-color: white; border-color: white;" (click)="openModal()"> 
+                <img class="glyphicon glyphicon-trash" height="45px" width="45px" src="assets/icon.png">
+            </button>
+        </td>
+        <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}" >
+            <div class="modal-dialog" role="document" >
+                  <div class="modal-content">
+                        <div class="modal-header">
+                              <h4 class="modal-title">Reply To {{c.Users.username}}</h4>
+                              <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                   <div class="modal-body">
+                       <form>
+                        <textarea style="width: 456px;" class="form-control" [(ngModel)]="replys" name="reply"></textarea>
+                        <br>
+                        <button type="button" class="btn btn-success form-control" (click)="onCloseHandled()" (click)="reply(c._id)">Send</button>
+                       </form>
+                     </div>
+               </div>
+                </div>
+    </div>
+        </tr>
+    </tbody>
+  

@@ -1,0 +1,75 @@
+<app-sidebar></app-sidebar>
+
+
+<div *ngIf="cart.length === 0" class="alert alert-info" style="margin-left: 270px;">
+  <b style="color: red;">You have no product in cart,please add product</b></div>
+<h1 style="text-align: center; color: blue;"> Cart Collections</h1>       
+ <h4 *ngIf="msg" style="text-align: center; color:rgb(93, 93, 196)">{{message}}</h4>
+    <div class="container" *ngFor="let c of cart" >
+  
+        <section id="cart"> 
+          <article class="product">
+            <header>
+              <a class="remove" (click)="deletecart(c._id)">
+                <img src="{{imagepath}}{{c.Product.image}}" alt="" >
+    
+                <h3>Remove product</h3>
+              </a>
+            </header>
+    
+            <div class="content">
+    
+              <h1>{{c.Product.name}}</h1>
+    
+              {{c.Product.detailes}}
+    
+              
+            </div>
+    
+            <footer class="content">
+             
+              <!-- <span class="qt-minus" (click)="OnDecrement()">-</span> -->
+    
+              <!-- <span class="qt-plus" (click)="OnIncrement()">+</span> -->
+              
+                <h2 class="full-price"  >
+                  TotalPrice: {{c.totalprice}}
+                 </h2>
+              
+             
+                 <span class="qt"> <b style="color: rgb(3, 63, 43);">Quantity:</b>{{c.quantity}} </span>
+              <h2 class="price" style="color: blue;">
+             
+              <del style="color: red;"> Price: {{c.Product.price}} </del> &nbsp;
+               DiscountPrice:{{c.Product.discountprice}}
+              </h2>
+             
+            </footer>
+          </article>
+    
+        </section>
+    
+      </div>
+    
+      <footer id="site-footer">
+        <div class="container clearfix">
+    
+          <div class="left">
+            <!-- <h2 class="subtotal">Subtotal: <span>{{subtotalprice}}</span>₹</h2> -->
+
+            <h3 class="shipping" style="color:rgb(4, 164, 111);">Shipping Charge: <span>50₹</span></h3>
+          </div>
+    
+          <div class="right"> 
+     
+      <h1 class="total">Total: <span> </span> <span>{{subtotalprice }}₹</span></h1>
+      <a class="btn"  (click)="onSelect()">Checkout</a>
+  
+            
+          </div>
+    
+        </div>
+      </footer>
+<br><br><br>
+
+<app-footer></app-footer>

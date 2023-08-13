@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<br><br>
+<div class="container">
+<div class="row">
+  <input type="text" class="form-control" [(ngModel)]="query" placeholder="Search...">
+    <div class="col-md-3 mt-2 " *ngFor="let product of item   | productname : query | productname : query ">
+        <div class="card shadow-lg" >
+            <div>
+              <img src="{{imagepath}}{{product.image}}" class="card-img-top" alt="..." width="250px" height="200px">
+              <div class="bottom-left">{{product.discount}}%OFF</div>
+        
+            </div>
+          
+            <div class="card-body">
+              <div class="row" >
+               <h2 class="card-title" style="text-align: center;">{{product.name}}</h2>
+              
+                <div class="col ">
+                  <p class="card-text" style="color: rgb(1, 9, 213);font-size: larger; font-style: oblique;">MRP:&nbsp;<del style="color: brown; font-size: medium;">
+                    {{product.price | currency:'INR'}}</del>&nbsp;&nbsp;&nbsp;{{product.discountprice | currency:'INR'}}</p>
+                </div>
+               <p>{{product.detailes | detailesslice : 31}}</p>
+              </div>
+              
+            
+         
+              <button   class="btn btn-info"  (click)="onSelect(product.pid)">View Detailes</button>
+              
+              
+            </div>
+          </div> 
+    </div>
+</div>
+</div>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="background-color: rgb(97, 176, 249);">
+  <br>
+<section class="vh-100" >
+    <div class="container-fluid h-custom" >
+      <div class="row d-flex justify-content-center align-items-center h-100" style="border: 2px solid rgb(79, 166, 247);border-radius: 200px 5px;background-color: rgb(250, 251, 251);">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="https://bizdatainsights.com/wp-content/uploads/2021/07/Home-appliances.jpg"
+            class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
+            
+            <form action=""  class="act" [formGroup]="siginForm" (ngSubmit)="siginForm.valid && signin()">
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3">Email address</label>
+                    <input type="email" class="form-control" name="email" placeholder="EmailId..."   formControlName="email" id="email"
+                    [ngClass]="{'is-invalid': siginForm.get('email')?.touched &&  siginForm.get('email')?.invalid}">
+                    <span class="invalid-feedback" *ngIf="siginForm.get('email')?.hasError('required')">Email-Id can't be blank</span>
+                </div>
+                <div class="form-outline mb-3">
+                    <label class="form-label" for="form3Example4">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password..."  formControlName="password" id="password"
+                    [ngClass]="{'is-invalid': siginForm.get('password')?.touched &&  siginForm.get('password')?.invalid}">
+                    <span class="invalid-feedback" *ngIf="siginForm.get('password')?.hasError('required')">Password can't be blank</span>
+                  </div>
+                
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="rememberme"> Remember me ?
+                        </label>
+                      </div>
+                </div> 
+    
+                <div class="form-group">
+                    
+                    <button class="btn btn-primary btn-lg btn-block " style="width: 280px;" [disabled]="siginForm.invalid">Log-In</button>
+                    &nbsp;&nbsp;
+                    <a routerLink="/forgotpasswoed"> Forgot Password?</a>
+                </div>
+               
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-success form-control" routerLink="/user/signup">Sign-up</button>
+                </div>
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-warning  form-control" routerLink="/admin/signin" style="color: rgb(12, 1, 1); font-size: larger;">Retailer</button>
+                </div>
+            </form>
+          <!-- <form action=""  class="act" [formGroup]="siginForm" (ngSubmit)="siginForm.valid && signin()"> -->
+            <!-- <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+              <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+  
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
+  
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-linkedin-in"></i>
+              </button>
+            </div> -->
+  
+            <!-- <div class="divider d-flex align-items-center my-4">
+              <p class="text-center fw-bold mx-3 mb-0">Or</p>
+            </div> -->
+  
+            <!-- Email input -->
+            <!-- <h2 style="text-align: center; color :blue">Home Appliances</h2> -->
+            <!-- <br>
+            <div class="form-outline mb-4">
+                <input type="email" class="form-control" name="email" placeholder="EmailId..."   formControlName="email" id="email"
+                [ngClass]="{'is-invalid': siginForm.get('email')?.touched &&  siginForm.get('email')?.invalid}">
+                <span class="invalid-feedback" *ngIf="siginForm.get('email')?.hasError('required')">Email-Id can't be blank</span>
+              <label class="form-label" for="form3Example3">Email address</label>
+            </div> -->
+  
+            <!-- Password input -->
+            <!-- <div class="form-outline mb-3">
+              <input type="password" class="form-control" name="password" placeholder="Password..."  formControlName="password" id="password"
+              [ngClass]="{'is-invalid': siginForm.get('password')?.touched &&  siginForm.get('password')?.invalid}">
+              <span class="invalid-feedback" *ngIf="siginForm.get('password')?.hasError('required')">Password can't be blank</span>
+              <label class="form-label" for="form3Example4">Password</label>
+            </div>
+  
+            <div class="d-flex justify-content-between align-items-center"> -->
+              <!-- Checkbox
+              <div class="form-check mb-0">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <label class="form-check-label" for="form2Example3">
+                  Remember me
+                </label>
+              </div>
+              <a href="#!" class="text-body">Forgot password?</a>
+            </div>
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="button" class="btn btn-primary btn-lg" [disabled]="siginForm.invalid"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a  routerLink="/user/signup" 
+                  class="link-danger">Register</a></p>
+            </div>
+  
+          </form> -->
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

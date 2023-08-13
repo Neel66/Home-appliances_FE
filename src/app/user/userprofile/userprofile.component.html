@@ -1,0 +1,143 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+ </head>
+ <body>
+    <app-sidebar></app-sidebar>
+    <div class="content">
+        <br>
+    
+    <div class="container">
+        <h6 *ngIf="edit" style="text-align: center; color : rgb(0, 170, 255)">{{msg}}</h6>
+            <div  class="col-md-6 offset-3">
+                <h2 style="text-align: center;color: blue;"> Profiles</h2>
+            <div class="form-group" >
+        <label>UserName</label>
+        <input readonly class="form-control" value="{{username}}">
+    </div>
+    <div class="form-group">
+        <label>Email-Id</label>
+        <input readonly class="form-control" value="{{emailid}}">
+    </div>
+    <div class="form-group">
+        <label>MobileNo</label>
+        <input readonly class="form-control" value="{{mobileno}}">
+    </div>
+    <br>
+    <div class="form-group">
+        <button (click)="openModal()" class="form-control btn btn-primary"> Edit Detailes</button> </div>
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}" >
+    
+        
+        <div class="modal-dialog" role="document" >
+              <div class="modal-content">
+                    <div class="modal-header">
+                          <h4 class="modal-title">Edit Detailes</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                        </div>
+               <div class="modal-body" >
+                   <form>
+                    <input  class="form-control" type="text" name="username" [(ngModel)]="username">
+                    <br>
+                    <input class="form-control" type="tel" [(ngModel)]="mobileno" name="mobileno">
+                    <br>
+                    <button type="button" class="btn btn-success form-control" (click)="onCloseHandled()">Update</button>
+                   </form>
+                 </div>
+           </div>
+            </div>
+    </div>
+    </div>
+    <br><br>
+    <div class="col-md-6 offset-3">
+        <h2 style="text-align: center;color: blue;">Add Address</h2>
+    <form>
+        <div class="row">
+        <div class="form-group col">
+            <b>HouseNo, Flat, Building</b>
+            <input  class="form-control" type="text" [(ngModel)]="houseno" name="houseno">
+        </div>
+        <div class="form-group col">
+            <b>Street:</b>
+            <input  class="form-control" type="text" [(ngModel)]="street" name="street">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col">
+            <b>Landmark:</b>
+            <input  class="form-control" type="text" [(ngModel)]="landmark" name="landmark">
+        </div>
+        <div class="form-group col">
+            <b>Pincode:</b>
+            <input  class="form-control" type="text" [(ngModel)]="pincode" name="pincode">
+        </div>
+        <div class="form-group col">
+            <b>City:</b>
+            <input  class="form-control" type="text" [(ngModel)]="city" name="city">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col">
+            <b>District:</b>
+            <input  class="form-control" type="text" [(ngModel)]="district" name="district">
+        </div>
+        <div class="form-group col">
+            <b>State:</b>
+            <input  class="form-control" type="text" [(ngModel)]="state" name="state">
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <button class="form-control btn-primary" (click)="addaddress()">Add Address</button>
+    </div>
+    </form>
+    <br>
+    <h2 *ngIf="add" style="text-align: center; color : green">Address Add Successfully</h2>
+    </div>
+    <br><br>
+    <h2 *ngIf="del" style="text-align: center; color : red">Address Delete Successfully</h2>
+        <table class="table table-striped table-bordered container" >
+            
+            <thead>
+            <tr>
+            <th>Id</th>
+            <th>UserName</th> 
+            <th>HouseNo</th>
+            <th>Street</th>
+            <th>Landmark</th>
+            <th>Pincode</th>
+            <th>City</th>
+            <th>District</th>
+            <th>State</th>
+            <!-- <th>Edit</th> -->
+            <th>Remove</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let a of address ; let index=index">
+                <td>{{index+1}}</td>
+                <td>{{username}}</td>
+                <td>{{a.houseno}}</td>
+                <td> {{a.street}} </td>
+                <td>{{a.landmark}}</td>
+                <td>{{a.pincode}}</td>
+                <td>{{a.city}} </td>
+                <td>{{a.district}} </td>
+                <td>{{a.state}}</td>
+                <!-- <td><button class="btn btn-primary"  >Edit</button></td> -->
+                <td><button class="btn btn-danger" (click)="deleteaddress(a._id)">Remove</button></td>
+               
+                </tr>
+                </tbody>
+    </table>
+    
+    
+    </div>
+    </div>
+    
+ </body>
+ </html>

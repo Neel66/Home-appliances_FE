@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<br><br>
+<div class="container">
+    <button class="btn btn-primary" routerLink="/admin/addretailer">Add Retailer</button> &nbsp;
+    <!-- <button class="btn btn-dark" routerLink="/admin/homepage">Back</button> -->
+    <br><br>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>USERNAME</th>
+                <th>EMAIL-ID</th>
+                <th>MOBILE-NO</th>
+                <th>Delete </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let retailer of retailers; let index = index">
+                <td>{{index+1}}</td>
+                <td>{{retailer.username}}</td>
+                <td>{{retailer.email}}</td>
+                <td>{{retailer.mobile}}</td>
+                <td >
+                    <div class="row">
+                        <div class="col">
+                            <button (click)="ondelete(retailer._id)" class="btn btn-danger" style="background-color: white; border-color: white;">
+                                <img class="glyphicon glyphicon-trash" height="40px" width="45px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdU5LBloVX2UPMDhEbgc99Tq6AzHRj5S4R-g&usqp=CAU">
+                            </button>
+                        </div>
+                        <!-- <div class="col">
+                            <button (click)="onSelect(pr.id)" class="btn btn-warning" style="margin-left: 10px;"> <i class="glyphicon glyphicon-pencil"></i></button>
+                        </div> -->
+                    </div>
+                   
+                   
+                    </td> 
+            </tr>
+        </tbody>
+    </table>
+</div>

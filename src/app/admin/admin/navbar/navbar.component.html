@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function color(){
+      alert('hello')
+      //document.body.style.backgroundColor = "red" ;
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#" id="nav">
+      <img src="https://www.pngitem.com/pimgs/m/61-614009_home-appliances-psd-electronic-home-appliances-png-transparent.png" class="rounded-circle z-depth-2" width="50" height="50" alt="logo">
+    </a>
+    <a class="navbar-brand" routerLink="/admin/homepage">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- <tabset>
+        <tab heading="ALL PRODUCTS" id="tab1" routerLink="/admin/allproduct">Basic content</tab>
+        <tab heading="Basic Title 1">Basic content 1</tab>
+        <tab heading="Basic Title 2">Basic content 2</tab>
+      </tabset> -->
+      <!-- <button (click)="color()" id="ge"> Home</button> -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin/allproduct"  id="all">ALL PRODUCTS</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin/showorders">SHOW ORDERS</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin/ordermanagement">ORDER MANAGEMENT</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin/complain">SHOW COMPLAINT</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin/showusers">SHOW USERS</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/admin/retailers">SHOW RETAILERS</a>
+        </li>
+       
+      </ul>
+      <!-- <form class="form-inline " id="form">
+        <div class="input-group">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+            style="width: 500px;">&nbsp;
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+      </form> -->
+     
+      <button class="btn btn-danger" id="logout" (click)=logout()>LOGOUT</button>
+    </div>
+  </nav>
+</body>
+</html>

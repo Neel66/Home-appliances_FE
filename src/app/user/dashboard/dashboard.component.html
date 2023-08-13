@@ -1,0 +1,71 @@
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark " style="background-color: black;">
+  <a class="navbar-brand" href="#" id="nav">
+    <img src="https://www.pngitem.com/pimgs/m/61-614009_home-appliances-psd-electronic-home-appliances-png-transparent.png" class="rounded-circle z-depth-2" width="50" height="50" alt="logo">
+  </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a
+          class="btn btn-primary btn-floating m-1"
+          style="background-color: #01050f;"
+          href="#!"
+          role="button"
+          ><i class="fa fa-home"></i
+        > Home</a>
+        <!-- <a class="nav-link" routerLink="/userhome">Home</a> -->
+      </li>
+      </ul>
+      <h3 style="color:blue; margin-left:50px">Home Appliances</h3>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="text" style="width: 650px; height: 40px;"  [(ngModel)]="query"  placeholder="Search..." id="search">
+      <div >
+        <a class="nav-link" routerLink="/addtocart">
+          <img src="assets/Capture.JPG" width="60px" id="cart">
+          <h1 class="top-right">{{cart}}</h1>
+        </a>
+       
+      </div>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-danger" id="logout" (click)=logout()>LOGOUT</button>
+  </div>
+</nav>
+<app-sidebar></app-sidebar>
+<div class="content">
+<br>
+  <div class="container">
+   
+    <div class="row">
+    
+        <div class="col-md-3 mt-2 " *ngFor="let p of product   | productdetailes : query   | paginate: { itemsPerPage: 20, currentPage: page, totalItems:totalLength } ">
+            <div class="card shadow-lg" >
+                <div>
+                  <img src="{{imagepath}}{{p.image}}" class="card-img-top" alt="..." width="250px" height="200px">
+                  <div class="bottom-left">{{p.discount}}%OFF</div>
+            
+                </div>
+              
+                <div class="card-body">
+                  <div class="row">
+                   <h2 class="card-title" style="text-align: center;">{{p.name}}</h2>
+                  
+                    <div class="col ">
+                      <p class="card-text" style="color: rgb(1, 9, 213);font-size: larger; font-style: oblique;">MRP:&nbsp;<del style="color: brown; font-size: medium;">
+                        {{p.price | currency:'INR'}}</del>&nbsp;&nbsp;&nbsp;{{p.discountprice | currency:'INR'}}</p>
+                    </div>
+                   <p>{{p.detailes | detailesslice : 31}}</p>
+                  </div>
+                  
+                
+             
+                  <button   class="btn btn-info"  (click)="onSelect(p._id)">View Detailes</button>
+                  
+                  
+                </div>
+              </div> 
+        </div>
+    </div>
+    <br>
+    <pagination-controls (pageChange)="page = $event" style="text-align: center;"></pagination-controls>
+    </div>
+</div>
+<br><br>

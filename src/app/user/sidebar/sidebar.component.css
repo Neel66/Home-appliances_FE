@@ -1,0 +1,86 @@
+#sidebar {
+    margin: 0;
+    padding: 0;
+    width: 270px;
+    background: #2a3542;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    }
+    body::-webkit-scrollbar {
+    display: none;
+    }
+    
+    #imgDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    border-right: 1px rgba(255, 252, 252, 0.2);
+    }
+    
+    #customerName {
+    text-align: center;
+    color: #dde;
+    }
+    
+    #customerBtn {
+    text-align: center;
+    margin-top: 20px;
+    }
+    #sidebar a {
+    display: block;
+    color: #ddd;
+    padding: 20px;
+    text-decoration: none;
+    border-bottom: solid 1px rgba(139, 139, 139, 0.2);
+    font-weight: 400;
+    }
+    #sidebar a.active {
+    color: #3fbbc0;
+    }
+    #sidebar a:hover:not(.active) {
+    background-color: #252d36;
+    color: #3fbbc0;
+    }
+    div.content {
+    margin-left: 270px;
+    padding: 1px 16px;
+    }
+    #sidebar a i {
+    margin-right: 15px;
+    }
+    h4 {
+    font-weight: 300;
+    margin: 0;
+    }
+    
+    .activeLink
+    {
+    background-color: #252d36;
+    color: #3fbbc0;
+    }
+    
+    hr{
+    background-color: rgb(100, 98, 98);
+    }
+    
+    @media screen and (max-width: 700px) {
+    #sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    }
+    .content {
+    margin-left: 0;
+    }
+    }
+    @media screen and (max-width: 400px) {
+    #sidebar a {
+    float: none;
+    }
+    .content {
+    margin-left: 0;
+    }
+    }

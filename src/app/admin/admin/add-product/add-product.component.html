@@ -1,0 +1,65 @@
+<br><br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container ">
+
+        <div class="col-md-6 offset-md-3">
+    
+            <h1 style="text-align: center; color: blue;"> Add New Product</h1>
+            <h5 *ngIf="error" style="color: red; text-align: center;">{{err}}</h5>
+            <form  (submit)="submit()" >
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Product Name..."
+                        [(ngModel)]="name" required>
+                   
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" class="form-control" name="price" placeholder="Price..." 
+                    [(ngModel)]="price" required>
+                       
+                </div>
+                <div class="form-group">
+                    <label>Discount</label>
+                    <input type="text" class="form-control" name="discount" placeholder="Discount..."
+                    [(ngModel)]="discount" required >
+                       
+                </div>
+                <div class="form-group">
+                    <label>Discount Price:</label>
+                    <input type="text" class="form-control" name="discountprice" placeholder="Discount Price..."
+                    [(ngModel)]="discountprice" required >
+                        
+                </div>
+                <div class="form-group">
+                  <label>Company Name</label>
+                  <input type="text" class="form-control" name="cid" id="cid" placeholder="Company Name..." [(ngModel)]="cid" required
+                 >
+              </div>
+              <div class="form-group">
+                <label>detailes</label>
+                <textarea type="text" class="form-control" name="detailes" id="detailes" placeholder="Detailes..." [(ngModel)]="detailes" required></textarea>  
+            </div>
+            <div class="form-group">
+              <label>Image</label>
+              <input (change)="onSelectImage($event)"   type="file" class="form-control" id="image" name="image">
+          </div>
+                <br>
+                <button class="btn btn-primary btn-lg btn-block form-control">Add Product</button>
+                <br> <br>
+               
+            </form>
+    
+        </div>
+    </div>   
+</body>
+</html>
+

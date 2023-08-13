@@ -1,0 +1,64 @@
+<br><br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container ">
+
+        <div class="col-md-6 offset-md-3">
+    
+            <h1 style="text-align: center; color: blue;"> Add New User </h1>
+            <form  [formGroup]="signupForm" (ngSubmit)="signupForm.valid && submit()" >
+                <div class="form-group">
+                    <label>UserName:</label>
+                    <input type="text" [ngClass]="{'is-invalid': signupForm.get('username')?.touched &&  signupForm.get('username')?.invalid}" class="form-control" id="username" name="username" placeholder="UserName..."
+                        formControlName="username" required>
+                    <span class="invalid-feedback">Name can't be blank.</span>
+                </div>
+                <div class="form-group">
+                    <label>Email-Id:</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email-Id..." [ngClass]="{'is-invalid': signupForm.get('email')?.touched &&  signupForm.get('email')?.invalid}"
+                        formControlName="email" required>
+                        <span class="invalid-feedback" *ngIf="signupForm.get('email')?.hasError('required')">Email-Id can't be blank</span>
+                        <span class="invalid-feedback" *ngIf="signupForm.get('email')?.hasError('email')">Email-Id must be valid</span>
+                </div>
+                <div class="form-group">
+                    <label>Mobile-No:</label>
+                    <input type="tel" class="form-control" name="mobile" placeholder="Mobile-No..."
+                        formControlName="mobile" required [ngClass]="{'is-invalid': signupForm.get('mobile')?.touched &&  signupForm.get('mobile')?.invalid}">
+                        <span class="invalid-feedback" *ngIf="signupForm.get('mobile')?.hasError('required')">Mobile Number can't be blank</span>
+                        <span  class="invalid-feedback" *ngIf="signupForm.get('mobile')?.hasError('minlength')">Mobile Number Must be 10 Number</span>
+                        <span  class="invalid-feedback" *ngIf="signupForm.get('mobile')?.hasError('maxlength')">Mobile Number Must be 10 Number</span>
+                        <span  class="invalid-feedback" *ngIf="signupForm.get('mobile')?.hasError('pattern')">Mobile Number Must be a Number</span>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password..."
+                        formControlName="password" required [ngClass]="{'is-invalid': signupForm.get('password')?.touched &&  signupForm.get('password')?.invalid}">
+                        <span class="invalid-feedback" *ngIf="signupForm.get('password')?.hasError('required')">Password can't be blank</span>
+                        <span class="invalid-feedback" *ngIf="signupForm.get('password')?.hasError('minlength')">Password must be 6</span>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password..." formControlName="confirmPassword" required
+                    [ngClass]="{'is-invalid': signupForm.get('confirmPassword')?.dirty &&  signupForm.get('confirmPassword')?.invalid}">
+                    <span class="invalid-feedback">Confirm Password must be match</span>
+                </div>
+                <br>
+                <button class="btn btn-primary btn-lg btn-block form-control" [disabled]="signupForm.invalid">Submit</button>
+                <br> <br>
+                <button class="btn btn-dark btn-lg btn-block form-control" routerLink="/admin/retailers">Back</button>
+            </form>
+            <br>
+    <h4 *ngIf="success" style="color: red; text-align: center;">Please enter valid data</h4>
+        </div>
+    </div>   
+</body>
+</html>
+
+<!-- <button (click)=color()>Click</button> -->

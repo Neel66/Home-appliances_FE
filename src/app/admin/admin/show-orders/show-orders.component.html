@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<br>
+
+<div class="container">
+      <pagination-controls (pageChange)="page = $event" style="text-align: center;"></pagination-controls>
+     
+<div *ngFor="let o of orders | paginate: { itemsPerPage: 10, currentPage: page, totalItems:totalLength }; let index=index">
+      
+            <h4 style="text-align: center;border: 2px solid rgb(246, 246, 251);background-color: rgb(0, 115, 255);">{{index + 1}}</h4>
+      <div class="row" style="border: 0.3px solid black;" *ngFor="let product of o.items">
+            <h6 style="color: blue; text-align: center;">User Order</h6>
+            <div style="width: 200px; height: 200px;">
+                  <img src="{{imagepath}}{{product.Product.image}}" alt="..." class="img-thumbnail"> 
+            </div>
+           
+         <div class="col" style="border: 0.3px solid black;"><b>ProductName:-</b>{{product.Product.name}}
+            <p></p>
+      <div class="col" ><b>Quantity:- </b> {{product.quantity}}</div>
+      <p></p>
+      <div class="col"><b >Details:-</b>{{product.Product.detailes}}</div>
+      </div>
+         <div class="col" style="border: 0.3px solid black;"> <b>CompanyName:-</b>{{product.Product.cid}}
+            <p></p>
+            <div class="col"><b >TotalPrice:-</b>{{product.totalprice}}</div>
+            <p></p>
+            <div class="col"><b >Order Date:-</b>{{o.orderdate }}</div>
+            <p></p>
+            <div class="col"><b >SubTotal:-</b>{{o.subtotal}}</div>
+      </div>
+      </div>
+      <br>
+      <div class="row" style="border: 0.3px solid black;">
+            <h6 style="color: blue; text-align: center;">User Detailes</h6>
+            <div class="col"style="border: 0.3px solid black;"><b>UserName:-</b>{{o.User.username}}</div>
+            <div class="col"style="border: 0.3px solid black;"><b>EmailId:-</b>{{o.User.email}}</div>
+            <div class="col"style="border: 0.3px solid black;"><b>MobileNo:-</b>{{o.User.mobile}}</div>
+            </div>
+            <br>
+      <div class="row" style="border: 0.3px solid black;">
+             <h6 style="color: blue; text-align: center;">User Address</h6>
+      <div class="col"style="border: 0.3px solid black;"><p><b>HouseNo:- </b>{{o.userAddress.houseno}}</p> <b>Street:- </b> <p>{{o.userAddress.street}}</p></div>
+      <div class="col" style="border: 0.3px solid black;"><p><b>Landmark:- </b>{{o.userAddress.landmark}} </p> <p><b>Pincode:- </b>{{o.userAddress.pincode}} </p></div>
+      <div class="col" style="border: 0.3px solid black;"><p> <b>City:- </b>{{o.userAddress.city}}</p><p><b>District:- </b> {{o.userAddress.district}}</p></div>
+      <div class="col" style="border: 0.3px solid black;"><p><b>State:- </b>{{o.userAddress.state}}</p></div>
+      </div>
+      <br>
+</div>
+<pagination-controls (pageChange)="page = $event" style="text-align: center;"></pagination-controls>
+</div>

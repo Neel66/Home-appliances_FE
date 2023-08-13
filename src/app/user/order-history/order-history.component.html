@@ -1,0 +1,144 @@
+<app-sidebar></app-sidebar>
+
+
+<div class="container" style="margin-left: 300px;">
+      <pagination-controls (pageChange)="page = $event" style="text-align: center;"></pagination-controls>
+      <div *ngIf="orders.length === 0"
+            style="border: 2px solid red; color: black;background-color: rgb(136, 136, 250);width: 800px;height: 500px;text-align: center;padding-top: 200px;font-size: 50px;margin-left: 250px;">
+            <b>Please Order Product</b>
+      </div>
+      <div
+            *ngFor="let o of orders | paginate: { itemsPerPage: 10, currentPage: page, totalItems:totalLength }; let index=index">
+
+            <h2
+                  style="color: rgb(2, 0, 8);text-align: center;border: 2px solid black;background-color: rgb(10, 137, 249);">
+                  {{index + 1}}</h2>
+
+            <div class="row" style="border: 0.3px solid rgb(1, 3, 12); background-color: rgb(200, 234, 247);"
+                  *ngFor="let p of o.items">
+                  <h6 style="color: blue; text-align: center;">My Order</h6>
+                  <div style="width: 200px; height: 200px;">
+                        <img src="{{imagepath}}{{p.Product.image}}" alt="..." class="img-thumbnail"
+                              style="height:190px;  width:200px">
+                        <br>
+                  </div>
+
+                  <div class="col" style="border: 0.3px solid black;"><b>ProductName:-</b>{{p.Product.name}}
+                        <p></p>
+                        <div class="col"><b>Quantity:- </b> {{p.quantity}}</div>
+                        <p></p>
+                        <div class="col"><b>Details:-</b>{{p.Product.detailes}}</div>
+                  </div>
+                  <div class="col" style="border: 0.3px solid black;"> <b>CompanyName:-</b>{{p.Product.cid}}
+                        <p></p>
+                        <div class="col"><b>TotalPrice:-</b>{{p.totalprice}}</div>
+                        <p></p>
+
+                        <div *ngIf="o.ordertraking == null">
+                              <div class="col"><b>OrderTracking:-</b></div>
+                              <div class="progress">
+                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 2%;"
+                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+
+                              </div>
+                              <b>Your Order in Progress</b>
+                        </div>
+                        <div *ngIf="o.ordertraking == 'Packed'">
+                              <div class="col"><b>OrderTracking:-</b></div>
+                              <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 10%;"
+                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+
+                              </div>
+                              <b style="color: blue;">Your Order Packed 🎀</b>
+                        </div>
+                        <div *ngIf="o.ordertraking == 'State'">
+                              <div class="col"><b>OrderTracking:-</b></div>
+                              <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 10%;"
+                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 20%;"
+                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+
+                              </div>
+                              <b>Your Order in {{o.userAddress.state}} </b>
+                        </div>
+
+                        <div *ngIf="o.ordertraking == 'Shipped'">
+                              <div class="col"><b>OrderTracking:-</b></div>
+                              <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 10%;"
+                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 20%;"
+                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%;"
+                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+
+                              </div>
+                              <b>Your Order has been Shipped </b>
+                        </div>
+                        <div *ngIf="o.ordertraking == 'Delivery Today'">
+                              <div class="col"><b>OrderTracking:-</b></div>
+                              <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"
+                                          aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 20%"
+                                          aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%"
+                                          aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 30%"
+                                          aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <b>Your Order will be Deliver Today 🤩</b>
+                        </div>
+                        <div *ngIf="o.ordertraking == 'Confirm Order'">
+                              <div class="col"><b>OrderDelivered:-</b></div>
+                              <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 15%"
+                                          aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%"
+                                          aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%"
+                                          aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 30%"
+                                          aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="25"
+                                          aria-valuemin="0" aria-valuemax="100"></div>
+
+                              </div>
+                              <b>Your Order Deliverd {{o.confirmorderdate | date}}</b>
+                        </div>
+
+                  </div>
+            </div>
+            <br>
+            <div class="row" style="border: 0.3px solid black;background-color: rgb(200, 234, 247);">
+                  <h6 style="color: blue; text-align: center;">My Detailes</h6>
+                  <div class="col" style="border: 0.3px solid black;"><b>UserName:-</b>{{o.User.username}}</div>
+                  <div class="col" style="border: 0.3px solid black;"><b>EmailId:-</b>{{o.User.email}}</div>
+                  <div class="col" style="border: 0.3px solid black;"><b>MobileNo:-</b>{{o.User.mobile}}</div>
+            </div>
+            <br>
+            <div class="row" style="border: 0.3px solid black;background-color: rgb(200, 234, 247);">
+                  <h6 style="color: blue; text-align: center;">My Address</h6>
+                  <div class="col" style="border: 0.3px solid black;">
+                        <p><b>HouseNo:- </b>{{o.userAddress.houseno}}</p> <b>Street:- </b>
+                        <p>{{o.userAddress.street}}</p>
+                  </div>
+                  <div class="col" style="border: 0.3px solid black;">
+                        <p><b>Landmark:- </b>{{o.userAddress.landmark}} </p>
+                        <p><b>Pincode:- </b>{{o.userAddress.pincode}} </p>
+                  </div>
+                  <div class="col" style="border: 0.3px solid black;">
+                        <p> <b>City:- </b>{{o.userAddress.city}}</p>
+                        <p><b>District:- </b> {{o.userAddress.district}}</p>
+                  </div>
+                  <div class="col" style="border: 0.3px solid black;">
+                        <p><b>State:- </b>{{o.userAddress.state}}</p>
+                  </div>
+            </div>
+            <br>
+      </div>
+      <br>
+      <pagination-controls (pageChange)="page = $event" style="text-align: center;"></pagination-controls>
+</div>

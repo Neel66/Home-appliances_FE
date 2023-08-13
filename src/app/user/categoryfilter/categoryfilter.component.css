@@ -1,0 +1,9 @@
+.bottom-left{
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    background-color: rgb(2, 95, 138);
+    border-radius: 3px;
+    color: white;
+    font-size: large;
+}
