@@ -2,52 +2,56 @@
 <br>
 <div class="container">
     <h1>Product List</h1>
-    
-    
+
+
     <button class="btn btn-primary" routerLink="/admin/addproduct">Add Product</button> &nbsp;
     <!-- <button class="btn btn-dark" routerLink="/admin/homepage">Back</button><br><br> -->
     <pagination-controls (pageChange)="page = $event" style="text-align: center;"></pagination-controls>
-    <input type="text" style="width: 1290px; height: 40px;border-color: blue;"  [(ngModel)]="query"  placeholder="Search..."> 
+    <input type="text" style="width: 1290px; height: 40px;border-color: blue;" [(ngModel)]="query"
+        placeholder="Search...">
     <br><br>
     <table class="table table-striped table-bordered">
-    
-    <thead>
-    <tr>
-    <th>Id</th>
-    <th>Image</th>
-    <th>Name</th>
-    <th>price</th>
-    <th>Discount</th>
-    <th>DiscountPrice</th>
-    <th>Description</th>
-    <th>Delete</th>   
-    <th>Edit</th>
-    </tr>
-    </thead>
-    
-    <tbody>
-    <tr *ngFor="let pr of products | search : query  | paginate: { itemsPerPage: 3, currentPage: page, totalItems:totalLength } ; let index=index ">
-    <td>{{index+1}}</td>
-    <!-- src="{{imagepath}}{{pr.image}}" -->
-    <td><img  alt="..." src="{{imagepath}}{{pr.image}}" class="img-thumbnail"></td>
-    <td>{{pr.name}}</td>
-    <td>{{pr.price}}</td>
-    <td>{{pr.discount}}</td>
-    <td>{{pr.discountprice}}</td>
-    <td>{{pr.detailes}}</td>
-    <td > <button (click)="ondelete(pr.pid)" style="background-color: white; border-color: white;" > 
-        <img class="glyphicon glyphicon-trash" height="45px" width="45px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdU5LBloVX2UPMDhEbgc99Tq6AzHRj5S4R-g&usqp=CAU">
-    </button></td> 
-    <td> <button (click)="onSelect(pr.pid)" style="background-color: white; border-color: white;"> 
-        <img class="glyphicon glyphicon-pencil" height="45px" width="45px" 
-        src="https://media.istockphoto.com/vectors/sharp-pencil-flat-design-long-shadow-glyph-icon-writing-and-drawing-vector-id1208663808?k=20&m=1208663808&s=170667a&w=0&h=NO4D2vgrh8FS9PgmijILWIAs_cSSkAQRtJ1NXhlyPYU="></button></td>
-    
-    </tr>
-    
-    
-    </tbody>
-    
-   
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>price</th>
+                <th>Discount</th>
+                <th>DiscountPrice</th>
+                <th>Description</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr
+                *ngFor="let pr of products | search : query  | paginate: { itemsPerPage: 3, currentPage: page, totalItems:totalLength } ; let index=index ">
+                <td>{{index+1}}</td>
+                <!-- src="{{imagepath}}{{pr.image}}" -->
+                <td><img alt="..." src="{{imagepath}}{{pr.image}}" class="img-thumbnail"></td>
+                <td>{{pr.name}}</td>
+                <td>{{pr.price}}</td>
+                <td>{{pr.discount}}</td>
+                <td>{{pr.discountprice}}</td>
+                <td>{{pr.detailes}}</td>
+                <td> <button (click)="ondelete(pr._id)" style="background-color: white; border-color: white;">
+                        <img class="glyphicon glyphicon-trash" height="45px" width="45px"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdU5LBloVX2UPMDhEbgc99Tq6AzHRj5S4R-g&usqp=CAU">
+                    </button></td>
+                <td> <button (click)="onSelect(pr.pid)" style="background-color: white; border-color: white;">
+                        <img class="glyphicon glyphicon-pencil" height="45px" width="45px"
+                            src="https://media.istockphoto.com/vectors/sharp-pencil-flat-design-long-shadow-glyph-icon-writing-and-drawing-vector-id1208663808?k=20&m=1208663808&s=170667a&w=0&h=NO4D2vgrh8FS9PgmijILWIAs_cSSkAQRtJ1NXhlyPYU="></button>
+                </td>
+
+            </tr>
+
+
+        </tbody>
+
+
     </table>
     <pagination-controls (pageChange)="page = $event" style="text-align: center;"></pagination-controls>
-    </div>
+</div>

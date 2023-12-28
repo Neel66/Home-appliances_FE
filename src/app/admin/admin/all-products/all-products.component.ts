@@ -6,42 +6,46 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-all-products',
   templateUrl: './all-products.component.html',
-  styleUrls: ['./all-products.component.css']
+  styleUrls: ['./all-products.component.css'],
 })
 export class AllProductsComponent implements OnInit {
-  products : any = [];
-  imagepath : string = environment.imagepath;
-  totalLength : any;
-  page !: number ;
-  query : any ;
+  products: any = [];
+  imagepath: string = environment.imagepath;
+  totalLength: any;
+  page!: number;
+  query: any;
 
-  constructor(private service:AllproductService,
-              private message : MessageService,
-              private router : Router) { }
+  constructor(
+    private service: AllproductService,
+    private message: MessageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.product();
-    console.log('a',this.page)
+    console.log('a', this.page);
   }
-  product(){
-    return this.service.getproduct().subscribe( res => {
-      console.log('p',this.page)
+  product() {
+    return this.service.getproduct().subscribe((res) => {
+      console.log('p', this.page);
       this.totalLength = res.rowCount;
-    this.products = res.data;
-    })
+      this.products = res.data;
+    });
   }
-  ondelete(pid:number){
- return this.service.deleteproduct(pid)
- .subscribe(res => {
-  if(res.rowCount === 1){
-  confirm('Are You sure Delete The Product')
-  this.message.setMsg({ msg: 'Delete Successfully', type: 'success' })
-  this.product();
+  ondelete(pid: number) {
+    const alert = confirm('Are You sure Delete The Product');
+    console.log('alert :>> ', alert);
+    if (alert) {
+      this.service.deleteproduct(pid).subscribe((res) => {
+        if (res.status === 1) {
+          this.message.setMsg({ msg: 'Delete Successfully', type: 'success' });
+          this.product();
+        }
+      });
+    }
   }
- })
- }
 
- onSelect(pid:number){
- return this.router.navigate(['/admin/editproduct/'+ pid])
- }
+  onSelect(pid: number) {
+    return this.router.navigate(['/admin/editproduct/' + pid]);
+  }
 }

@@ -1,6 +1,6 @@
 #sidebar {
     margin: 0;
-    padding: 0;
+    padding-right: 0;
     width: 270px;
     background: #2a3542;
     position: fixed;

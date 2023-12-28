@@ -1,55 +1,57 @@
 <app-sidebar></app-sidebar>
 <div class="container">
-    <div class="col-md-6 offset-md-3"> 
-<form>
-    <h1 style="color: blue;text-align: center;">Add Address</h1>
-    <div class="form-group">
-        <label>UserName</label>
-        <input readonly class="form-control" value="{{username}}">
-    </div>
-    <div class="form-group">
-        <label>Email-Id</label>
-        <input readonly class="form-control" value="{{emailid}}">
-    </div>
-    <div class="form-group">
-        <label>MobileNo</label>
-        <input readonly class="form-control" value="{{mobileno}}">
-    </div>
-    <div class="form-group" >
-        <label>TotalPrice:</label>
-       
-        <input readonly class="form-control" value="{{total}}">
-    </div>
-    <br>
+    <div class="col-md-6 offset-md-3">
+        <form>
+            <h1 style="color: blue;text-align: center;">Add Address</h1>
+            <div class="form-group">
+                <label>UserName</label>
+                <input readonly class="form-control" value="{{username}}">
+            </div>
+            <div class="form-group">
+                <label>Email-Id</label>
+                <input readonly class="form-control" value="{{emailid}}">
+            </div>
+            <div class="form-group">
+                <label>MobileNo</label>
+                <input readonly class="form-control" value="{{mobileno}}">
+            </div>
+            <div class="form-group">
+                <label>TotalPrice:</label>
 
-    <div class="form-group" >
-        <label>Address:-  <button class="btn btn-success" style="width: 150px;height: 35px;" routerLink="/userprofile">Add Address</button> </label> 
-        <fieldset  *ngFor="let a of address" class="col-md-15 mt-2">
-            <button class="btn btn-primary form-control" (click)="onSelect(a._id)">Select</button>
-            <p></p>
-            <div class="row">
-        <p class="col">HouseNo: {{a.houseno}}</p>
-        <p class="col">Street: {{a.street}}</p></div>
-        <div class="row">
-            <p class="col">Landmark: {{a.landmark}} </p>
-            <p class="col">Pincode: {{a.pincode}}</p>
-        </div>
-        <div class="row">
-            <p class="col">City: {{a.city}}</p>
-            <p class="col">District: {{a.district}}</p>
-            
-        </div>
-        
-        <p class="col">State: {{a.state}}</p>  
-       
-        </fieldset>
-       
-        <!-- <input readonly class="form-control" value=""> -->
-    </div>
+                <input readonly class="form-control" value="{{total}}">
+            </div>
+            <br>
 
-</form>
+            <div class="form-group">
+                <label>Address:- <button class="btn btn-success" style="width: 150px;height: 35px;"
+                        routerLink="/userprofile">Add Address</button> </label>
+                <fieldset *ngFor="let a of address" class="col-md-15 mt-2">
+                    <button class="btn btn-primary form-control" (click)="onSelect(a._id)">Select</button>
+                    <p></p>
+                    <div class="row">
+                        <p class="col">HouseNo: {{a.houseno}}</p>
+                        <p class="col">Street: {{a.street}}</p>
+                    </div>
+                    <div class="row">
+                        <p class="col">Landmark: {{a.landmark}} </p>
+                        <p class="col">Pincode: {{a.pincode}}</p>
+                    </div>
+                    <div class="row">
+                        <p class="col">City: {{a.city}}</p>
+                        <p class="col">District: {{a.district}}</p>
+
+                    </div>
+
+                    <p class="col">State: {{a.state}}</p>
+
+                </fieldset>
+
+                <!-- <input readonly class="form-control" value=""> -->
+            </div>
+
+        </form>
+    </div>
 </div>
-</div>
 
-<br><br>
-<app-footer></app-footer>
+<!-- <br><br>
+<app-footer></app-footer> -->
